@@ -21,3 +21,6 @@ app.all("*", (req, res) =>
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
+
+
+//не совсем понял "ошибка линтера", как именно это посмотреть, ESLint установлен, 3 зависимости установлены.
