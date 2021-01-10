@@ -1,18 +1,5 @@
 {
-  "env": {
-    "es2020": true,
-    "node": true
-  },
-  "extends": [
-    "airbnb-base"
-  ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
+  "extends": "airbnb-base",
   "rules": {
     "no-underscore-dangle": [
       "error",
