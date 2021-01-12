@@ -1,13 +1,30 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 3000;
-const path = require('path');
+const { PORT = 3000 } = process.env;
 const usersRoutes = require('./routes/users.js');
 const cardsRoutes = require('./routes/cards.js');
 
-//  раздаём статические файлы
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+mongoose.connect('mongodb://localhost:27017/mestodb', {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+});
+
+// id пользователя
+app.use((req, res, next) => {
+  req.user = {
+    _id: '5ffdb76dcacd961d603e4c83', // вставьте сюда _id созданного пользователя в postman
+  };
+  next();
+});
+
 // JSON-список всех пользователей
 app.use('/users', usersRoutes);
 // JSON-список всех карточек
